@@ -11,6 +11,7 @@ type UserScoreDomain struct {
 }
 
 type Usecase interface {
+	GetAllScore(ctx context.Context) ([]UserScoreDomain, error)
 }
 
 type Repository interface {
