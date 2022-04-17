@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	userscore "harfishRestAPI/business/userscore"
+	"harfishRestAPI/helpers/messages"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -29,4 +30,13 @@ func (repository *MongoUserScore) GetAllScore(ctx context.Context) ([]userscore.
 	}
 	// fmt.Println(result)
 	return result, nil
+}
+
+func (repositrory *MongoUserScore) CreateScoreAndFeedback(ctx context.Context, data *userscore.UserScoreDomain) error {
+	scoreInsert := UserScoreFromDomain(*data)
+	_, err := repositrory.Conn.Collection("UserScore").InsertOne(ctx, scoreInsert)
+	if err != nil {
+		return nil
+	}
+	return messages.ErrInsertSuccess
 }

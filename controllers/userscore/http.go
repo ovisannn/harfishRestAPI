@@ -3,6 +3,7 @@ package userscore
 import (
 	userscoreU "harfishRestAPI/business/userscore"
 	"harfishRestAPI/controllers"
+	"harfishRestAPI/controllers/userscore/request"
 	"harfishRestAPI/controllers/userscore/response"
 	"net/http"
 
@@ -31,4 +32,15 @@ func (controller *UserscoreController) GetAll(c echo.Context) error {
 		UserscoreResult = append(UserscoreResult, response.UserScoreFromDomain(i))
 	}
 	return controllers.NewSuccessResponse(c, UserscoreResult)
+}
+
+func (controller *UserscoreController) CreateScoreAndFeedback(c echo.Context) error {
+	insertScoreFeedback := request.UserScore{}
+	c.Bind(&insertScoreFeedback)
+	ctx := c.Request().Context()
+	err := controller.UserScoreUsecase.CreateScoreAndFeedback(ctx, insertScoreFeedback.UsesrScoreToDomain())
+	if err != nil {
+		return controllers.NewErrorResponse(c, http.StatusInternalServerError, err)
+	}
+	return controllers.NewSuccessResponse(c, err)
 }

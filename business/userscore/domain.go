@@ -12,9 +12,11 @@ type UserScoreDomain struct {
 
 type Usecase interface {
 	GetAllScore(ctx context.Context) ([]UserScoreDomain, error)
+	CreateScoreAndFeedback(ctx context.Context, data *UserScoreDomain) error
 }
 
 type Repository interface {
 	GetAllScore(ctx context.Context) ([]UserScoreDomain, error)
+	CreateScoreAndFeedback(ctx context.Context, data *UserScoreDomain) error
 	// get top 20
 }
