@@ -11,8 +11,9 @@ import (
 	_userscoreController "harfishRestAPI/controllers/userscore"
 	_userscoreRepo "harfishRestAPI/model/database"
 
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	// "github.com/labstack/echo"
+
+	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
 )
 
@@ -35,12 +36,12 @@ func main() {
 		Name:     viper.GetString("database.name"),
 	}
 	e := echo.New()
-	CorsHandle := viper.GetStringSlice("CORS.AllowOrigins")
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: CorsHandle,
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-	}))
-	e.Pre(middleware.RemoveTrailingSlash())
+	// CorsHandle := viper.GetStringSlice("CORS.AllowOrigins")
+	// e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+	// 	AllowOrigins: CorsHandle,
+	// 	AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+	// }))
+	// e.Pre(middleware.RemoveTrailingSlash())
 
 	db, errDb := config.ConnectDB()
 	if errDb != nil {

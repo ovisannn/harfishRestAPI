@@ -20,12 +20,13 @@ func NewMongoUserScore(conn *mongo.Database) userscore.Repository {
 
 func (repository *MongoUserScore) GetAllScore(ctx context.Context) ([]userscore.UserScoreDomain, error) {
 	var result []userscore.UserScoreDomain
-	cursor, err := repository.Conn.Collection("userScore").Find(ctx, bson.M{})
+	cursor, err := repository.Conn.Collection("UserScore").Find(ctx, bson.M{})
 	if err != nil {
 		return nil, err
 	}
 	if err = cursor.All(ctx, &result); err != nil {
 		return []userscore.UserScoreDomain{}, err
 	}
+	// fmt.Println(result)
 	return result, nil
 }

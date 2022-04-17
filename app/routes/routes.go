@@ -3,7 +3,7 @@ package routes
 import (
 	_userscoreController "harfishRestAPI/controllers/userscore"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 type ControllerList struct {

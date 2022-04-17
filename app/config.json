@@ -1,10 +1,10 @@
 {
     "database": {
       "username": "oviSanjaya",
-      "password": "Ydra646fLkJlQVbx",
+      "password": "dqoQsKulc49gfw2Z",
       "host": "cluster0.gufx7.mongodb.net",
       "port": "27017",
-      "name": "Harfish"
+      "name": "Harfish3D"
     },
     "context": {
       "timeout": 10

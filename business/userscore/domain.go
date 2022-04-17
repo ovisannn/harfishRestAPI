@@ -3,11 +3,11 @@ package userscore
 import "context"
 
 type UserScoreDomain struct {
-	IdUser   int
-	UserName string
-	FishName string
-	Score    int
-	Feedback string
+	// IdUser   int
+	UserName string `bson:"username,omitempty" json:"username,omitempty"`
+	FishName string `bson:"fishname,omitempty" json:"fishname,omitempty"`
+	Score    int    `bson:"score,omitempty" json:"score,omitempty"`
+	Feedback string `bson:"feedback,omitempty" json:"feedback,omitempty"`
 }
 
 type Usecase interface {
