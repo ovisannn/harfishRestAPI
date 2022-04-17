@@ -4,6 +4,12 @@ import (
 	// "github.com/labstack/echo/middleware"
 
 	"harfishRestAPI/model/mongo"
+	"log"
+
+	_routes "harfishRestAPI/app/routes"
+	_userscoreUsecase "harfishRestAPI/business/userscore"
+	_userscoreController "harfishRestAPI/controllers/userscore"
+	_userscoreRepo "harfishRestAPI/model/database"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -41,10 +47,16 @@ func main() {
 		panic(errDb)
 	}
 
-	// init repo
-	// init usecase
-	// init controller
+	userscoreRepo := _userscoreRepo.NewMongoUserScore(db)
+	userscoreUsecase := _userscoreUsecase.NewUserscoreUsecase(userscoreRepo)
+	userscoreController := _userscoreController.NewUserscoreController(userscoreUsecase)
 
 	// init routes
 
+	routesInit := _routes.ControllerList{
+		UserControllers: *userscoreController,
+	}
+
+	routesInit.RouteRegister(e)
+	log.Fatal(e.Start(viper.GetString("server.address")))
 }

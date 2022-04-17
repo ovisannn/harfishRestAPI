@@ -2,7 +2,7 @@ package database
 
 import (
 	"context"
-	userscore "harfishRestAPI/business/UserScore"
+	userscore "harfishRestAPI/business/userscore"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
