@@ -54,7 +54,7 @@ func main() {
 	// init routes
 
 	routesInit := _routes.ControllerList{
-		UserControllers: *userscoreController,
+		UserscoreController: *userscoreController,
 	}
 
 	routesInit.RouteRegister(e)
