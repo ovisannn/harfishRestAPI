@@ -3,6 +3,7 @@ package userscore
 import (
 	"context"
 	"harfishRestAPI/helpers/messages"
+	"sort"
 )
 
 type UserScoreUsecase struct {
@@ -20,14 +21,12 @@ func (Usecase *UserScoreUsecase) GetAllScore(ctx context.Context) ([]UserScoreDo
 	if err != nil {
 		return []UserScoreDomain{}, err
 	}
+	sort.Slice(result, func(i, j int) bool {
+		return result[i].Score > result[j].Score
+	})
 	return result, nil
 }
 
-// result, err := UseCase.categoriesRepo.Create(ctx, data)
-// if err != nil {
-// 	return Domain{}, err
-// }
-// return result, nil
 func (Usecase *UserScoreUsecase) CreateScoreAndFeedback(ctx context.Context, data *UserScoreDomain) error {
 	err := Usecase.UserScoreRepo.CreateScoreAndFeedback(ctx, data)
 	if err != nil {

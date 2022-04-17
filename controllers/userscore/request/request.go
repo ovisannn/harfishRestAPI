@@ -19,14 +19,3 @@ func (record *UserScore) UsesrScoreToDomain() *userscoreU.UserScoreDomain {
 		Feedback: record.Feedback,
 	}
 }
-
-// func (record *Categories) ToDomain() *categories.Domain {
-// 	return &categories.Domain{
-// 		ID:           record.ID,
-// 		CategoryName: record.CategoryName,
-// 		Description:  record.Description,
-// 		Rules:        record.Rules,
-// 		Header:       record.Header,
-// 		ColorTheme:   record.ColorTheme,
-// 	}
-// }
