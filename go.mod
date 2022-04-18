@@ -1,3 +1,5 @@
+// +heroku goVersion go1.17
+
 module harfishRestAPI
 
 go 1.17
