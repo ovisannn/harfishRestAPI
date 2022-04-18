@@ -13,6 +13,6 @@
       "address": ":8080"
     },
     "CORS": {
-      "AllowOrigins" :["http://localhost:3000", "http://localhost:3001"]
+      "AllowOrigins" :["http://localhost:3000", "http://localhost:3001", "https://polar-cliffs-49639.herokuapp.com"]
     }
   }
