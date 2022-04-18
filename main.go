@@ -5,6 +5,7 @@ import (
 
 	"harfishRestAPI/model/mongo"
 	"log"
+	"os"
 
 	_routes "harfishRestAPI/app/routes"
 	_userscoreUsecase "harfishRestAPI/business/userscore"
@@ -59,5 +60,9 @@ func main() {
 	}
 
 	routesInit.RouteRegister(e)
-	log.Fatal(e.Start(viper.GetString("server.address")))
+	envPort := os.Getenv("PORT")
+	if envPort != "" {
+		envPort = viper.GetString("server.address")
+	}
+	log.Fatal(e.Start(envPort))
 }
